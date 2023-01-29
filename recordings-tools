@@ -1,0 +1,46 @@
+#!/bin/sh
+
+if [ "$1" = "to_implement" ];then
+sudo apt install sox
+# https://stackoverflow.com/a/8954707/5623661
+
+# get the audio lenght
+sox --info -d 
+# https://stackoverflow.com/a/46493743/5623661
+
+# get the audio timestamp
+ls -la --time-style=full-iso Gravando_100.wav
+# https://github.com/octacian/timecalc/releases/download/v1.0.0/timecalc-linux
+# from audio timestamp minus its lenght, calc the time it started
+echo 14:50:40.00 - 00:15:11.70 | ./timecalc | head -n1 | sed 's,^>>> ,,'
+fi
+
+nm="recordings-tools"
+vs="r1"
+itsversion="""
+        \e[1;42m $nm \e[0m\e[100m version $vs \e[0m
+        \e[100m Created by Daniella Mesquita \e[0m
+"""
+#should get from config file in common with gipfs
+
+if [ "$1" = "" ]; then
+   echo "$itsversion"
+   echo "Type 'recordings-tools --help' (without quotes) to see a list of available commands."
+fi
+
+# displays help message with a list of commands:
+if [ "$1" = "--help" ] || [ "$1" = "-h" ]; then
+   echo "        \e[1;42m $nm $vs \e[0m"
+   echo "Use these commands after/together with 'recordings-tools' command."
+   echo "Available commands:"
+   echo "Information:"
+   echo "   --help, -h                  Shows all available commands"
+   echo "   --version, -v               Shows the version of $nm"
+   echo "------------------------------"
+fi
+
+if [ "$1" = "--version" ] || [ "$1" = "-v" ]; then
+   echo "recordings-tools $vs"
+fi
+
+echo "recordings-tools is not ready yet; still in development. Although you can already use our recordings-trimmer!"
