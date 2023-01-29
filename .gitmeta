@@ -1,0 +1,4 @@
+chown -h 1000:1000 './recordings-tools'
+chmod 0777 './recordings-tools'
+/usr/bin/touch -hcmd "2023-01-29 17:39:19.4299982000 -0300" './recordings-tools'
+/usr/bin/touch -hcad "2023-01-29 17:39:19.4299982000 -0300" './recordings-tools'
