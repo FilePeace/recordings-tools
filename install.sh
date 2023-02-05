@@ -1,5 +1,7 @@
 #!/bin/sh
 
+rocketlaunch_dir=`pwd` #from https://unix.stackexchange.com/a/52919/470623
+
 echo "Installing recordings-tools suite's apps..."
 
 echo "Installing recordings-trimmer..."
@@ -14,7 +16,7 @@ chmod +x install.sh && sh ./install.sh
 #rm -f .gitattributes
 #rm -f .gitmeta
 #rm -rf rsc
-cd "$SCRIPTPATH"
+cd "$rocketlaunch_dir"
 
 echo "Installing recordings-hashing..."
 cd include/recordings-hashing
@@ -22,7 +24,7 @@ if [ ! -e .git ]; then git clone --no-checkout https://github.com/FilePeace/reco
 if [ -e .git ]; then git pull; fi
 git checkout -f
 chmod +x install.sh && sh ./install.sh
-cd "$SCRIPTPATH"
+cd "$rocketlaunch_dir"
 
 echo "Installing recordings-tools..." && echo "- Installing recordings-tools command in /usr/bin..."
 sudo cp -f recordings-tools /usr/bin
